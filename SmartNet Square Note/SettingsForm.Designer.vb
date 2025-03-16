@@ -25,6 +25,8 @@ Partial Class SettingsForm
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SettingsForm))
         Me.SettingsTabControl = New System.Windows.Forms.TabControl()
         Me.GeneralTabPage = New System.Windows.Forms.TabPage()
+        Me.IntegrationGroupBox = New System.Windows.Forms.GroupBox()
+        Me.AutoStartupCheckBox = New System.Windows.Forms.CheckBox()
         Me.RestartWarningLabel = New System.Windows.Forms.Label()
         Me.TextFontAndColorGroupBox = New System.Windows.Forms.GroupBox()
         Me.ChangeTextFontButton = New System.Windows.Forms.Button()
@@ -45,10 +47,11 @@ Partial Class SettingsForm
         Me.NoteColorDialog = New System.Windows.Forms.ColorDialog()
         Me.TextColorDialog = New System.Windows.Forms.ColorDialog()
         Me.TextFontDialog = New System.Windows.Forms.FontDialog()
-        Me.IntegrationGroupBox = New System.Windows.Forms.GroupBox()
-        Me.AutoStartupCheckBox = New System.Windows.Forms.CheckBox()
+        Me.PrepareUpgradeGroupBox = New System.Windows.Forms.GroupBox()
+        Me.ExportToV3Button = New System.Windows.Forms.Button()
         Me.SettingsTabControl.SuspendLayout()
         Me.GeneralTabPage.SuspendLayout()
+        Me.IntegrationGroupBox.SuspendLayout()
         Me.TextFontAndColorGroupBox.SuspendLayout()
         Me.NoteColorGroupBox.SuspendLayout()
         Me.UpdatesTabPage.SuspendLayout()
@@ -56,7 +59,7 @@ Partial Class SettingsForm
         Me.AutoUpdateGroupBox.SuspendLayout()
         Me.AdvancedTabPage.SuspendLayout()
         Me.SettingsRestoreGroupBox.SuspendLayout()
-        Me.IntegrationGroupBox.SuspendLayout()
+        Me.PrepareUpgradeGroupBox.SuspendLayout()
         Me.SuspendLayout()
         '
         'SettingsTabControl
@@ -77,6 +80,19 @@ Partial Class SettingsForm
         resources.ApplyResources(Me.GeneralTabPage, "GeneralTabPage")
         Me.GeneralTabPage.Name = "GeneralTabPage"
         Me.GeneralTabPage.UseVisualStyleBackColor = True
+        '
+        'IntegrationGroupBox
+        '
+        Me.IntegrationGroupBox.Controls.Add(Me.AutoStartupCheckBox)
+        resources.ApplyResources(Me.IntegrationGroupBox, "IntegrationGroupBox")
+        Me.IntegrationGroupBox.Name = "IntegrationGroupBox"
+        Me.IntegrationGroupBox.TabStop = False
+        '
+        'AutoStartupCheckBox
+        '
+        resources.ApplyResources(Me.AutoStartupCheckBox, "AutoStartupCheckBox")
+        Me.AutoStartupCheckBox.Name = "AutoStartupCheckBox"
+        Me.AutoStartupCheckBox.UseVisualStyleBackColor = True
         '
         'RestartWarningLabel
         '
@@ -178,6 +194,7 @@ Partial Class SettingsForm
         '
         'AdvancedTabPage
         '
+        Me.AdvancedTabPage.Controls.Add(Me.PrepareUpgradeGroupBox)
         Me.AdvancedTabPage.Controls.Add(Me.SettingsRestoreGroupBox)
         resources.ApplyResources(Me.AdvancedTabPage, "AdvancedTabPage")
         Me.AdvancedTabPage.Name = "AdvancedTabPage"
@@ -196,18 +213,18 @@ Partial Class SettingsForm
         Me.RestorePreviousSettingsButton.Name = "RestorePreviousSettingsButton"
         Me.RestorePreviousSettingsButton.UseVisualStyleBackColor = True
         '
-        'IntegrationGroupBox
+        'PrepareUpgradeGroupBox
         '
-        Me.IntegrationGroupBox.Controls.Add(Me.AutoStartupCheckBox)
-        resources.ApplyResources(Me.IntegrationGroupBox, "IntegrationGroupBox")
-        Me.IntegrationGroupBox.Name = "IntegrationGroupBox"
-        Me.IntegrationGroupBox.TabStop = False
+        Me.PrepareUpgradeGroupBox.Controls.Add(Me.ExportToV3Button)
+        resources.ApplyResources(Me.PrepareUpgradeGroupBox, "PrepareUpgradeGroupBox")
+        Me.PrepareUpgradeGroupBox.Name = "PrepareUpgradeGroupBox"
+        Me.PrepareUpgradeGroupBox.TabStop = False
         '
-        'AutoStartupCheckBox
+        'ExportToV3Button
         '
-        resources.ApplyResources(Me.AutoStartupCheckBox, "AutoStartupCheckBox")
-        Me.AutoStartupCheckBox.Name = "AutoStartupCheckBox"
-        Me.AutoStartupCheckBox.UseVisualStyleBackColor = True
+        resources.ApplyResources(Me.ExportToV3Button, "ExportToV3Button")
+        Me.ExportToV3Button.Name = "ExportToV3Button"
+        Me.ExportToV3Button.UseVisualStyleBackColor = True
         '
         'SettingsForm
         '
@@ -221,6 +238,8 @@ Partial Class SettingsForm
         Me.SettingsTabControl.ResumeLayout(False)
         Me.GeneralTabPage.ResumeLayout(False)
         Me.GeneralTabPage.PerformLayout()
+        Me.IntegrationGroupBox.ResumeLayout(False)
+        Me.IntegrationGroupBox.PerformLayout()
         Me.TextFontAndColorGroupBox.ResumeLayout(False)
         Me.TextFontAndColorGroupBox.PerformLayout()
         Me.NoteColorGroupBox.ResumeLayout(False)
@@ -232,8 +251,7 @@ Partial Class SettingsForm
         Me.AutoUpdateGroupBox.PerformLayout()
         Me.AdvancedTabPage.ResumeLayout(False)
         Me.SettingsRestoreGroupBox.ResumeLayout(False)
-        Me.IntegrationGroupBox.ResumeLayout(False)
-        Me.IntegrationGroupBox.PerformLayout()
+        Me.PrepareUpgradeGroupBox.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -261,4 +279,6 @@ Partial Class SettingsForm
     Friend WithEvents ChangeTextColorButton As Button
     Friend WithEvents IntegrationGroupBox As GroupBox
     Friend WithEvents AutoStartupCheckBox As CheckBox
+    Friend WithEvents PrepareUpgradeGroupBox As GroupBox
+    Friend WithEvents ExportToV3Button As Button
 End Class

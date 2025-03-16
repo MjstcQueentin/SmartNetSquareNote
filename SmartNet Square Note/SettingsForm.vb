@@ -2,6 +2,7 @@
 Imports System.Net
 Imports System.IO.File
 Imports IWshRuntimeLibrary
+Imports System.Xml
 
 Public Class SettingsForm
     Private Sub SettingsForm_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -135,6 +136,45 @@ Public Class SettingsForm
             AddStartup()
         Else
             RemoveStartup()
+        End If
+    End Sub
+
+    Private Sub ExportToV3Button_Click(sender As Object, e As EventArgs) Handles ExportToV3Button.Click
+        Dim notesCollection As XDocument =
+            <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+            <SquareNoteDataFile>
+                <QuickNotes></QuickNotes>
+            </SquareNoteDataFile>
+
+        For Each note In NoteCollection.FromJsonCollection(My.Settings.NoteCollection)
+            Dim noteXml As XElement =
+                <QuickNote>
+                    <ID><%= note.noteID %></ID>
+                    <BackgroundColour>
+                        <A><%= My.Settings.NoteColor.A %></A>
+                        <R><%= My.Settings.NoteColor.R %></R>
+                        <G><%= My.Settings.NoteColor.G %></G>
+                        <B><%= My.Settings.NoteColor.B %></B>
+                    </BackgroundColour>
+                    <Body><%= note.noteText %></Body>
+                    <CreateTime><%= Date.Now %></CreateTime>
+                    <IsDeleted><%= Not note.isVisible %></IsDeleted>
+                </QuickNote>
+
+            notesCollection.Descendants("SquareNoteDataFile").First().Descendants("QuickNotes").First().Add(noteXml)
+        Next
+
+        Console.WriteLine(notesCollection)
+
+        Dim dialog As SaveFileDialog = New SaveFileDialog()
+        dialog.Filter = "Fichier XML|*.xml"
+        If dialog.ShowDialog() = DialogResult.OK Then
+            Dim stream = dialog.OpenFile()
+            If stream IsNot Nothing Then
+                Dim collStr = notesCollection.ToString()
+                Dim bytes = System.Text.Encoding.Unicode.GetBytes(collStr)
+                stream.Write(bytes, 0, bytes.Length)
+            End If
         End If
     End Sub
 End Class
