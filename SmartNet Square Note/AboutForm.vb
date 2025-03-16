@@ -17,6 +17,6 @@
     End Sub
 
     Private Sub LinkLabelSource_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabelSource.LinkClicked
-        Process.Start("https://github.com/SmartNetApps/SmartNetSquareNote")
+        Process.Start("https://github.com/MjstcQueentin/SmartNetSquareNote")
     End Sub
 End Class
