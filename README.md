@@ -2,6 +2,12 @@
 
 SmartNet Square Note est un logiciel de prise de notes sous la forme de petites notes rectangulaires collées sur le bureau. Il est construit en Visual Basic sur le framework Microsoft .NET.
 
+## Fin de vie
+
+Cette version de SmartNet Square Note est remplacée par une version bâtie sur .NET avec WinUI.
+
+https://www.lesmajesticiels.org/blog/general/2025-02-12-square-note-sera-bientot-remasterise
+
 ## Besoin d'aide ?
 
 Vous trouverez de l'aide pour SmartNet Square Note :
